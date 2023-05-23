@@ -8,7 +8,7 @@ const Footer = () => {
     var today  = new Date();
     return (
         <Block className={styles.footer}>
-            <Paragraph text={today.toLocaleDateString("en-US", options)} />
+            <Paragraph text={'TODO App - ' + today.toLocaleDateString("en-US", options)} />
         </Block>
     );
 };

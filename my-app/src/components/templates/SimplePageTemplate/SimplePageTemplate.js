@@ -5,13 +5,16 @@ import Block from '../../atoms/Block/Block';
 import styles from './SimplePageTemplate.module.scss'
 
 
-const SimplePageTemplate = ({children}) => {
+const SimplePageTemplate = ({ children }) => {
     return (
-        <Block className={styles.simplyPageTemplate}>
-            <Header/>
-            {children}
-            <Footer/>
-        </Block>
+        <>
+            <Header />
+            <Block className={styles.content}>
+                {children}
+            </Block>
+            <Footer />
+        </>
+
     );
 };
 export default SimplePageTemplate;
