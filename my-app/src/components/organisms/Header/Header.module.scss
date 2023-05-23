@@ -1,0 +1,13 @@
+@import './../../../variables.scss';
+
+.header{
+    background-color: $primary-color;
+    display: inline-flex;
+    height: 80px;
+    width: 100%;
+}
+
+.appName{
+    margin-top:25px;
+    color: $text-color-primary-background;
+}
