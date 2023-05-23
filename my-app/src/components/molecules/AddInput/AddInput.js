@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './AddInput.module.scss';
-import Button from '../../atoms/Button/Button';
 import Input from '../../atoms/Input/Input';
 import Block from '../../atoms/Block/Block';
+import CustomButton from '../../atoms/CustomButton/CustomButton';
 
-const AddInput = () => {
+const AddInput = ({size, width}) => {
   return (
-    <Block>
-      <Input placeHolder={'Type new task'} />
-      <Button text={'Add'} />
+    <Block className={styles.addInput}>
+      <Input size={size} width={width} placeHolder={'Type new task'} />
+      <CustomButton size={size} text={'Add'} variant={'contained'} />
     </Block>
   );
 };

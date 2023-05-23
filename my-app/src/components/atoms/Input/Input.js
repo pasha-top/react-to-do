@@ -1,11 +1,16 @@
 import React from 'react';
 import styles from './Input.module.scss';
+import { Box, TextField } from '@mui/material';
 
-const Input = ({placeHolder}) => {
+const Input = ({ placeHolder, size, width }) => {
   return (
-    <>
-      <input className={styles.input} placeholder={placeHolder}/>
-    </>
+    <Box
+      sx={{
+        width: width,
+      }}
+    >
+      <TextField fullWidth size={size} className={styles.input} label={placeHolder} />
+    </Box>
   );
 };
 export default Input;
