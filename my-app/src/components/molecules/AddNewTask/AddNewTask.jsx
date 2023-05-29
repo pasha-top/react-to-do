@@ -4,7 +4,7 @@ import Input from '../../atoms/Input/Input';
 import Block from '../../atoms/Block/Block';
 import CustomButton from '../../atoms/CustomButton/CustomButton';
 import { useSelector, useDispatch } from 'react-redux'
-import { add, updateNewTaskTitle } from '../../../app/features/TaskList/TaskListSlice'
+import { add, updateNewTaskTitle } from '../../../app/features/task-list/task-list-slice'
 
 const AddInput = ({size, width}) => {
   const dispatch = useDispatch()

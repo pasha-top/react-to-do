@@ -4,7 +4,7 @@ import Input from '../../atoms/Input/Input';
 import Block from '../../atoms/Block/Block';
 import CustomButton from '../../atoms/CustomButton/CustomButton';
 import { useDispatch } from 'react-redux'
-import { updateTask, remove } from '../../../app/features/TaskList/TaskListSlice'
+import { updateTask, remove } from '../../../app/features/task-list/task-list-slice'
 import CheckBox from '../../atoms/CheckBox/CheckBox';
 
 const TaskListItem = ({ task, size, width }) => {
