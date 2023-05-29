@@ -18,7 +18,7 @@ const AddInput = ({ size, width }) => {
   }
 
   return (
-    <Block className={styles.addInput}>
+    <Block className={styles['add-input']}>
       <Input size={size} width={width} value={newTaskTitle} placeHolder={'Type new task'} onChange={(e) => dispatch(updateNewTaskTitle(e.target.value))} />
       <CustomButton size={size} text={'Add'} variant={'contained'} onClick={ onAdd } />
     </Block>

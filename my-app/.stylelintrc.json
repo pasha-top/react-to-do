@@ -1,0 +1,9 @@
+{
+    "extends": [
+        "stylelint-config-standard"
+    ],
+    "customSyntax": "postcss-scss",
+    "rules": {
+        "import-notation": "string"
+      }
+}

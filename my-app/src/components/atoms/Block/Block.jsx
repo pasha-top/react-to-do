@@ -7,4 +7,5 @@ const Block = ({children, className}) => {
     </>
   );
 };
+
 export default Block;
