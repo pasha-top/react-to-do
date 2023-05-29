@@ -1,12 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import taskListService from "../../../services/task-list/task-list-service"
 
-// export const create = createAsyncThunk(
-//     "tutorials/create",
-//     async ({ title, description }) => {
-//         const res = await TaskListService.create({ title, description });
-//         return res.data;
-//     }
-// );
+export const getTasks = createAsyncThunk(
+    "taskList/get",
+    async () => {
+        return await taskListService.get();
+    }
+);
+
+export const addTask = createAsyncThunk(
+    "taskList/add",
+    async (task) => {
+        await taskListService.add(task.title, task.done);
+        return;
+    }
+);
+
+export const updateTask = createAsyncThunk(
+    "taskList/update",
+    async ({ id, title, done }) => {
+        await taskListService.update(id, title, done);
+    }
+);
+
+
+export const deleteTask = createAsyncThunk(
+    "taskList/delete",
+    async ({ id }) => {
+        await taskListService.remove(id);
+    }
+);
+
+
 
 
 export class Task {
@@ -17,9 +42,8 @@ export class Task {
     }
 }
 
-const initialState = {
+export const initialState = {
     tasks: [],
-    id: 0,
     newTaskTitle: ''
 };
 
@@ -28,32 +52,20 @@ export const taskListSlice = createSlice({
     name: 'taskList',
     initialState,
     reducers: {
-        add: (state) => {
-            state.tasks.push(new Task(++state.id, state.newTaskTitle))
-            state.newTaskTitle = initialState.newTaskTitle;
-        },
-        updateTask: (state, action) => {
-            let id = action.payload.id;
-            let title = action.payload.title;
-            let done = action.payload.done;
-
-            state.tasks.filter(i => i.id === id).map(task => {
-                task.title = title;
-                task.done = done;
-            });
-
-            state.tasks = [...state.tasks];
-        },
-        remove: (state, action) => {
-            state.tasks = state.tasks.filter(i => i.id !== action.payload.id);
-        },
         updateNewTaskTitle: (state, action) => {
             state.newTaskTitle = action.payload;
         }
     },
-})
+    extraReducers: (builder) => {
+        builder.addCase(getTasks.fulfilled, (state, action) => {
+            state.tasks = [...action.payload];
+        });
+        builder.addCase(addTask.fulfilled, () => { });
+        builder.addCase(deleteTask.fulfilled, () => { });
+    }
+});
 
 // Action creators are generated for each case reducer function
-export const { add, updateTask, remove, updateNewTaskTitle } = taskListSlice.actions
+export const { updateNewTaskTitle } = taskListSlice.actions
 
 export default taskListSlice.reducer

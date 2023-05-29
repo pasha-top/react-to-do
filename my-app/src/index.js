@@ -6,8 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
+import { getTasks } from './app/features/task-list/task-list-slice';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+store.dispatch(getTasks())
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>

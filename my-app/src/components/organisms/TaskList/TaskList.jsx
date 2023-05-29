@@ -1,11 +1,11 @@
-import React from 'react';
+import {React } from 'react';
 import styles from './TaskList.module.scss';
 import Block from '../../atoms/Block/Block';
 import { useSelector } from 'react-redux'
 import TaskListItem from '../../molecules/TaskListItem/TaskListItem';
 
 const TaskList = ({ width, size }) => {
-    const tasksValue = useSelector((state) => state.tasksValue)
+    const tasksValue = useSelector((state) => state.tasksValue);
 
     return (
         <Block className={styles.container}>
